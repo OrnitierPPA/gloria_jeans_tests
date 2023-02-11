@@ -5,6 +5,9 @@ from pages.product_page import ProductPage
 
 @pytest.mark.basket_tests
 def test_add_to_basket_from_product_page(browser):
+    """
+    The test checks the addition of product from the product page
+    """
     link = "https://www.gloria-jeans.ru/p/GSW005760-3/Molocnyj-ukorocennyj-kardigan-s-ob%22emnymi-rukavami-dla-devoc"
     page = ProductPage(browser, link)
     page.open()
