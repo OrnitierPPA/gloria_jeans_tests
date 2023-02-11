@@ -37,5 +37,6 @@ class OrderPageLocators:
     PATRONYMIC = (By.CLASS_NAME, "wrapper-text-zone__input.wrapper-text-zone__input--active-placeholder.js-dadata-patronymic")
     PHONE_BOX = (By.CLASS_NAME, "wrapper-text-zone__input.wrapper-text-zone__input--active-placeholder.js-mask-input")
     ONLINE_PAY = (By.CLASS_NAME, "checkout-payment__container")
+    ADDRESS_LIST_1 = (By.XPATH, "//div[@class='suggestions-wrapper']/div[@class='suggestions-suggestions']/div[@data-index='1']")
     GO_TO_PAY = (By.CSS_SELECTOR, "button.checkout-information__button.press-button.press-button--red-style.press-button--font-normal.js-checkout-submit-button")
-
+    PAYMENT = (By.CSS_SELECTOR, "div.Price__StyledWrapper-sc-ymfuk6-2.jZQZhS.qa-payment-info2-price")

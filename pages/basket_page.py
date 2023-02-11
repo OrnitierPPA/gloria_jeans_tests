@@ -1,5 +1,7 @@
 import time
 
+from selenium.webdriver.common.keys import Keys
+
 from .base_page import BasePage
 from .locators import BasketPageLocators, OrderPageLocators
 
@@ -18,7 +20,9 @@ class BasketPage(BasePage):
         assert self.is_element_present(*OrderPageLocators.NAME_BOX), "Name box doesn't exist"
         assert self.is_element_present(*OrderPageLocators.SURNAME_BOX), "Surname box doesn't exist"
         assert self.is_element_present(*OrderPageLocators.PHONE_BOX), "Phone box doesn't exist"
-        self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).send_keys('г Москва, ул Таганрогская, д 7А ')
+        self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).send_keys('г Москва, ул Таганрогская, д 8, кв')
+        self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).click()
+        self.browser.find_element(*OrderPageLocators.ADDRESS_LIST_1).click()
         self.browser.find_element(*OrderPageLocators.APARTMENT).send_keys('7')
         self.browser.find_element(*OrderPageLocators.NAME_BOX).send_keys('Иван')
         self.browser.find_element(*OrderPageLocators.SURNAME_BOX).send_keys('Иванович')
@@ -28,4 +32,4 @@ class BasketPage(BasePage):
         self.browser.find_element(*OrderPageLocators.ONLINE_PAY).click()
         assert self.is_element_present(*OrderPageLocators.GO_TO_PAY), "Button pay doesn't exist"
         self.browser.find_element(*OrderPageLocators.GO_TO_PAY).click()
-        time.sleep(15)
+        assert self.is_element_present(*OrderPageLocators.PAYMENT), "The link for payment did not pass"
