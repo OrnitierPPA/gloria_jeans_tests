@@ -1,6 +1,8 @@
 from .locators import BasePageLocators, BasketPageLocators
 
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
@@ -15,6 +17,14 @@ class BasePage:
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
+        except NoSuchElementException:
+            return False
+        return True
+
+    def wait_element(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(
+                EC.element_to_be_clickable((how, what)))
         except NoSuchElementException:
             return False
         return True

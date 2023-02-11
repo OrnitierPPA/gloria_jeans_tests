@@ -20,10 +20,11 @@ class BasketPage(BasePage):
         assert self.is_element_present(*OrderPageLocators.NAME_BOX), "Name box doesn't exist"
         assert self.is_element_present(*OrderPageLocators.SURNAME_BOX), "Surname box doesn't exist"
         assert self.is_element_present(*OrderPageLocators.PHONE_BOX), "Phone box doesn't exist"
-        self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).send_keys('г Москва, ул Таганрогская, д 8, кв')
+        self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).send_keys('г Саратов, ул Шелковичная, д 180 ')
         self.browser.find_element(*OrderPageLocators.ADDRESS_BOX).click()
+        assert self.wait_element(*OrderPageLocators.ADDRESS_LIST_1), "Address list doesn't exist"
         self.browser.find_element(*OrderPageLocators.ADDRESS_LIST_1).click()
-        self.browser.find_element(*OrderPageLocators.APARTMENT).send_keys('7')
+        self.browser.find_element(*OrderPageLocators.APARTMENT).send_keys('12')
         self.browser.find_element(*OrderPageLocators.NAME_BOX).send_keys('Иван')
         self.browser.find_element(*OrderPageLocators.SURNAME_BOX).send_keys('Иванович')
         self.browser.find_element(*OrderPageLocators.PATRONYMIC).send_keys('Ивановский')
